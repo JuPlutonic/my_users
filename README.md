@@ -22,3 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+# MyUsers (mb in the future MyCMS or MyAdminPanel
