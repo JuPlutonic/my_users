@@ -51,7 +51,7 @@
             <li><%= link_to "Link1", "/path1"  %></li>
             <li>
               <% if current_user && current_user.admin? %>
-                <%= link_to "Админка", "/path2"  %>
+                <%= link_to 'Админка', admin_users_path  %>
               <% end %>
             </li>
             <li>
@@ -85,7 +85,6 @@
           </div><!--/.well -->
         </div><!--/span-->
       </div><!--/row-->
-
     </div> <!-- /container -->
 
   </body>
