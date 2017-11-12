@@ -1,6 +1,6 @@
-<h1>Greetings, <%= @name %></h1>
-<p>The time now is <%= formatted_time(@time) %></p>
-<p>This page has been viewed <%= @times_displayed %> times(s)</p>
+<h1><%=@i18n_hello+@name %></h1>
+<p><%=(@i18n_time_now)+(@time) %></p>
+<p><%=(@i18n_viewed1)+(@to_s_times_displayed)+(@i18n_viewed2)%></p>
 
-<p><%= link_to "Google", "http://www.google.com" %></p>
-<p><%= link_to "Goodbye", greeter_goodbye_path %></p>
+<p><%= link_to 'Google', 'http://www.google.com' %></p>
+<p><%= link_to @i18n_goodbye, goodbye_path %></p>
