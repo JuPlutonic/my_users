@@ -50,20 +50,20 @@
           <ul class="nav navbar-nav">
             <li>
               <% if user_signed_in? %>
-                <%= link_to "Профиль", users_profiles_path  %>
+                <%= link_to ' Профиль', users_profiles_path  %>
               <% end %>
             </li>
             <li>
               <% if under_admin? %>
-                <%= link_to 'Админка', users_path %>
+                <%= link_with_item :users, users_path, title: ' Админка' %>
               <% end %>
             </li>
             <li>
               <% if user_signed_in? %>
-                <%= link_to 'Выйти', destroy_user_session_path,
-                method: :delete %><span>Email: <%= current_user.email %></span>
+                <%= link_with_item :'sign-out', destroy_user_session_path, title: ' Выйти' ,
+                method: :delete %><span>name: <%= current_user.name %></span>
               <% else %>
-                <%= link_to 'Войти', new_user_session_path %>
+                <%= link_with_item :'sign-in', new_user_session_path, title: ' Войти' %>
               <% end %>
             </li>
           </ul>

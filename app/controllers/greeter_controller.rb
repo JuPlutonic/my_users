@@ -11,11 +11,11 @@ class GreeterController < ApplicationController
     @times_displayed ||= 0 # Should work only in gaps of one request
     @times_displayed += 1
     @to_s_times_displayed=@times_displayed.to_s
-    @i18n_goodbye='До свидания' # Goodbye
+    @i18n_goodbye=' До свидания' # Goodbye
   end
 
   def goodbye
     @name = 'Незарегистрированный пользователь'
-        @i18n_goodbye='До свидания ' # Bye
+        @i18n_goodbye='До свидания' # Bye
   end
 end

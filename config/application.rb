@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module MyUsers
   class Application < Rails::Application
+    config.i18n.default_locale = :ru
+    config.i18n.locale = :ru
     # Initialize configuration defaults for originally generated Rails version.
     # config.load_defaults 5.1
     # config.assets.initialize_on_precompile = false

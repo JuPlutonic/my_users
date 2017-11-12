@@ -2,5 +2,5 @@
 <p><%=@i18n_time_now+@time %></p>
 <p><%=@i18n_viewed1+@to_s_times_displayed+@i18n_viewed2%></p>
 
-<p><%= link_to 'Google', 'http://www.google.com' %></p>
-<p><%= link_to @i18n_goodbye, goodbye_path %></p>
+<p><%= link_with_item :google, 'http://www.google.com', title: ' Google' %></p>
+<p><%= link_with_item 'times-circle-o', goodbye_path, title: @i18n_goodbye %></p>
