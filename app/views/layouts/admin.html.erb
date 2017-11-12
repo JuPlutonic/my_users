@@ -48,14 +48,14 @@
         <a class="navbar-brand" href="#">MyUsers</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Пользователи", "/path1" %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
+            <li><%= link_to 'Пользователи', users_path %></li>
+            <li><%= link_to 'Профиль', users_profiles_path %></li>
             <li>
               <% if user_signed_in? %>
-                <%= link_to "Выйти", destroy_user_session_path,
+                <%= link_to 'Выйти', destroy_user_session_path,
                 method: :delete %><span>Email: <%= current_user.email %></span>
               <% else %>
-                <%= link_to "Войти", new_user_session_path %>
+                <%= link_to 'Войти', new_user_session_path %>
               <% end %>
             </li>
           </ul>
@@ -69,17 +69,16 @@
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-        <!--<div class="col-lg-3">
+        <div class="col-lg-3">
           <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+            <ul class="nav nav-pills">
+              <li class="nav-header">Пользователи>:</li>
+              <% @users.each do |u| %>
+                <p class="row"><li><% link_to u.name, u %></li></p>
+              <% end %>
             </ul>
-          </div>--><!--/.well -->
-        <!--</div>--><!--/span-->
+          </div><!--/.well -->
+        </div><!--/col-lg-3-->
       </div><!--/row-->
     </div> <!-- /container -->
 

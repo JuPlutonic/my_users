@@ -48,10 +48,14 @@
         <%= link_to 'MyUsers', root_path, class: 'navbar-brand' %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
             <li>
-              <% if current_user && current_user.admin? %>
-                <%= link_to 'Админка', admin_users_path  %>
+              <% if user_signed_in? %>
+                <%= link_to "Профиль", users_profiles_path  %>
+              <% end %>
+            </li>
+            <li>
+              <% if under_admin? %>
+                <%= link_to 'Админка', users_path %>
               <% end %>
             </li>
             <li>
@@ -60,12 +64,20 @@
                 method: :delete %><span>Email: <%= current_user.email %></span>
               <% else %>
                 <%= link_to 'Войти', new_user_session_path %>
-            <% end %>
+              <% end %>
             </li>
           </ul>
         </div>
       </div>
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+      </div><!--/row-->
+    </div> <!-- /container -->
 
   </body>
       <footer>

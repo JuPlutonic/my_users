@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Admin::UsersController < Admin::BaseController
-
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -32,10 +31,10 @@ class Admin::UsersController < Admin::BaseController
   def destroy
     @user.destroy
     if @user.destroyed?
-      redirect_to admin_users_url, notice: 'Пользователь удалён.'
+      redirect_to users_url, notice: 'Пользователь удалён.'
     else
       flash.now[:alert] = 'Пользователь не был удалён.'
-      redirect_to admin_users_url
+      redirect_to users_url
     end
   end
 
@@ -44,7 +43,8 @@ class Admin::UsersController < Admin::BaseController
   def set_user
       @user = User.find(params[:id])
   end
+
   def user_params
-    params.require(:user).permit(:email,:admin)
+    params.require(:user).permit(:name, :email, :admin)
   end
 end
