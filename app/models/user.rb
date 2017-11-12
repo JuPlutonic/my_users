@@ -8,6 +8,5 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   validates :email, uniqueness: true, presence: true
   # try remember_created_at not created_at
-  scope :by_creation_desc, -> { order(created_at: 'desc') }
   scope :admins, -> { where(admin: true) }
 end
