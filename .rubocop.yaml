@@ -1,0 +1,65 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'db/*'
+    - 'db/fixtures/**/*'
+    - 'tmp/**/*'
+    - 'bin/**/*'
+    - 'generator_templates/**/*'
+    - 'builds/**/*'
+  Rails:
+    Enabled: true
+
+# Gems in consecutive lines should be alphabetically sorted
+Bundler/OrderedGems:
+  Enabled: false
+
+# Layout ######################################################################
+
+  # Gians performance:
+  # Add an empty line after magic comments to separate them from code.
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+  Include:
+    - 'app/assets/**/*'
+    - 'app/channels/**/*'
+    - 'app/controllers/**/*'
+    - 'app/helpers/**/*'
+    - 'app/jobs/**/*'
+    - 'app/mailers/**/*'
+    - 'app/models/**/*'
+    - 'app/views/**/*'
+  Exclude:
+    - 'config.ru'
+    - 'Gemfile'
+    - 'Rakefile'
+
+
+
+# This cops checks the indentation of the here document bodies.
+Layout/IndentHeredoc:
+  Enabled: false
+
+# Style #######################################################################
+
+# Document classes and non-namespace modules.
+Style/Documentation:
+  Enabled: false
+
+# Use Ruby >= 1.9 syntax for hashes. Prefer { a: :b } over { :a => :b }.
+Style/HashSyntax:
+  Enabled: true
+
+# Metrics #####################################################################
+
+# Avoid methods longer than 10 lines of code.
+Metrics/MethodLength:
+  Max: 18
+
+# Limit lines to 130 characters.
+Metrics/LineLength:
+  Max: 130

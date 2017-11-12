@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  # root 'greeteer#hello'
   devise_for :users
-  resources :users, except: :destroy
+  # resources :users, except: :destroy
   # resources :profiles
   namespace :admin do
-    get 'welcome/index'
     resources :users # , :profiles
+  get 'users' => 'admin#users', as: :users
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
