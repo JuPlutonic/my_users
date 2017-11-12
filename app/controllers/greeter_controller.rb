@@ -16,6 +16,6 @@ class GreeterController < ApplicationController
 
   def goodbye
     @name = 'Незарегистрированный пользователь'
-    @i18n_goodbye = 'До свидания' # Bye
+    @i18n_goodbye = 'До свидания ' # Bye
   end
 end
