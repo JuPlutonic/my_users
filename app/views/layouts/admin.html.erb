@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "MyUsers" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "MyUsers -  Admin" %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", :media => "all" %>
@@ -41,42 +41,45 @@
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
         </button>
-        <%= link_with_item 'sun-o', root_path, title: 'MyUsers', class: 'navbar-brand' %>
+        <a class="navbar-brand" href="/admin/users">MyUsers</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav navbar-left">
-            <% if user_signed_in? %>
-              <li><%= link_with_item 'id-card', users_profiles_path, title: 'Профиль' %></li>
-            <% end %>
-            <% if under_admin? %>
-              <li><%= link_with_item :users, users_path, title: ' Админка' %></li>
-            <% end %>
+            <li><%= link_with_item :users, users_path, title: ' Пользователи' %></li>
+            <li><%= link_with_item 'id-card', users_profiles_path, title: 'Профиль' %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-              <li><%= link_with_item 'sign-out', destroy_user_session_path, title: ' Выйти' , method: :delete %></li>
+              <li><%= link_with_item 'sign-out', destroy_user_session_path, title: ' Выйти', method: :delete %></li>
               <li><%= link_with_item :pencil, edit_user_registration_path, title: "id в системе: #{current_user.id}" %></li>
-            <% else %>
-              <li><%= link_with_item 'sign-in', new_user_session_path, title: ' Войти' %></li>
             <% end %>
           </ul>
         </div>
       </div>
     </div>
+
     <div class="container">
       <div class="row">
         <div class="col-lg-9">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
+        <div class="col-lg-3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-pills">
+              <li class="nav-header"> Новые пользователи:</li>
+              <% @users.each do |u| %>
+                <p class="row"><li><% link_to u.name, u %></li></p>
+              <% end %>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/col-lg-3-->
       </div><!--/row-->
     </div> <!-- /container -->
 
+
   </body>
     <footer class='navbar-fixed-bottom'>
-      <p class="text-center">&copy; 2017 Жевлаков Алексей</p>
+      <p class="text-center">&copy;  2017 Жевлаков Алексей</p>
     </footer>
 </html>

@@ -4,7 +4,7 @@ module ApplicationHelper
   def link_with_item(icon, path, options = {})
     title = options.delete(:title)
     link_to path, options do
-      content_tag(:i, title, class: "fa fa-#{icon}")
+      content_tag(:i, ' ' + title, class: "fa fa-#{icon} links")
     end
   end
 end

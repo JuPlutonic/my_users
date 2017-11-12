@@ -13,12 +13,13 @@ class ApplicationController < ActionController::Base
   end
 
   def under_admin?
-    current_user&.admin?
+    current_user && current_user.admin?
   end
 
   # Current_user can only edit his profile
   def authorized?(object)
-    object && current_user && (current_user.author_of?(object) || current_user.admin?)
+    object && current_user && (
+                         current_user.author_of?(object) || current_user.admin?)
   end
 
   private
