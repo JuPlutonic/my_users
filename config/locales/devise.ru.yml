@@ -40,13 +40,16 @@ ru:
     failure:
       already_authenticated: "Вы уже вошли в систему."
       inactive: "Ваша учетная запись еще не активирована."
-      invalid:
+      invalid: "Пароль или Email неправильны"
       last_attempt: "У вас осталась последняя попытка ввода пароля до блокировки учетной записи."
       locked: "Ваша учетная запись заблокирована."
-      not_found_in_database:
+      not_found_in_database: "Не найден в базе"
       timeout: "Ваш сеанс закончился. Пожалуйста, войдите в систему снова."
       unauthenticated: "Вам необходимо войти в систему или зарегистрироваться."
       unconfirmed: "Вы должны подтвердить вашу учетную запись."
+      user:
+        invalid: "Пароль или Email неправильны"
+        not_found_in_database: "Не найден в базе"
     mailer:
       confirmation_instructions:
         action: "Активировать"
@@ -112,11 +115,16 @@ ru:
       already_signed_out: "Выход из системы уже выполнен."
       new:
         sign_in: "Войти"
+        submit: "Войти"
       signed_in: "Вход в систему выполнен."
       signed_out: "Выход из системы выполнен."
     shared:
       links:
         back: "Назад"
+        forgot: "Забыли пароль?"
+        signup: "Регистрация"
+        signin: "Войти c помощью"
+        confirm: "Подтвердить почту"
         didn_t_receive_confirmation_instructions: "Не получили подтверждение?"
         didn_t_receive_unlock_instructions: "Не получили код разблокировки?"
         forgot_your_password: "Забыли пароль?"
