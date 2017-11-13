@@ -1,0 +1,19 @@
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+    </button>
+    <a class="navbar-brand" href="/admin/users">MyUsers</a>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_with_item :users, admin_users_path, title: ' Пользователи' %></li>
+        <li><%= link_with_item 'id-card', profile_path, title: 'Профиль' %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_with_item 'sign-out', destroy_user_session_path, title: ' Выйти', method: :delete %></li>
+          <li><%= link_with_item :pencil, edit_user_registration_path, title: "id в системе: #{current_user.id}" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,5 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @profiles = @user.profiles
-    # render 'profiles/index'
   end
 end

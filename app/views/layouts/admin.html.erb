@@ -6,83 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "MyUsers -  Admin" %></title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag "application", :media => "all" %>
-
-    <!-- For third-generation iPad with high-resolution Retina display: -->
-    <!-- Size should be 144 x 144 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
-
-    <!-- For iPhone with high-resolution Retina display: -->
-    <!-- Size should be 114 x 114 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
-
-    <!-- For first- and second-generation iPad: -->
-    <!-- Size should be 72 x 72 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
-
-    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <!-- Size should be 57 x 57 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
-
-    <!-- For all other devices -->
-    <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
-    <%= javascript_include_tag "application" %>
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
-    <![endif]-->
+    <%= render 'shared/bootstrap' %>
   </head>
+
   <body>
-
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-        </button>
-        <a class="navbar-brand" href="/admin/users">MyUsers</a>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav navbar-left">
-            <li><%= link_with_item :users, admin_users_path, title: ' Пользователи' %></li>
-            <li><%#= link_with_item 'id-card', users_profile_path, title: 'Профиль' %></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
-              <li><%= link_with_item 'sign-out', destroy_user_session_path, title: ' Выйти', method: :delete %></li>
-              <li><%= link_with_item :pencil, edit_user_registration_path, title: "id в системе: #{current_user.id}" %></li>
-            <% end %>
-          </ul>
-        </div>
+    <%= render 'shared/navbar' %>
+    <% if more_than_one_admin?(@users)%>
+      <div class="container col-lt-3">
+          Иные администраторы:
+        <ul><% @users.admins.each do |a| %>
+          <% if a.id !=current_user.id %>
+            <p><li>id: <%= a.id %></li></p>
+          <% end %>
+        <% end %>
+        </ul>
       </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9">
+    <% end %>
+    <div class="container col-lt-9">
           <%= bootstrap_flash %>
           <%= yield %>
-        </div>
-        <% if more_than_one_admin?(@users)%>
-        <div class="col-md-3">
-          <div class="well sidebar-nav">
-            Иные администраторы:
-              <ul><% @users.admins.each do |a| %>
-                <% if a.id !=current_user.id %>
-                  <p><li>id: <%= a.id %></li></p>
-                <% end %>
-              <% end %>
-            </ul>
-          </div><!--/.well -->
-        </div>
-        <% end %>
-      </div><!--/row-->
-    </div> <!-- /container -->
-
-
+    </div>
   </body>
-    <footer class='navbar-fixed-bottom'>
-      <p class="text-center">&copy;  2017 Жевлаков Алексей</p>
-    </footer>
+  <footer class='navbar-fixed-bottom'>
+    <p class="text-center">&copy;  2017 Жевлаков Алексей</p>
+  </footer>
 </html>
