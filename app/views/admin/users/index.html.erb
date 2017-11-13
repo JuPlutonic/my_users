@@ -11,10 +11,12 @@
     <span class='links'>
       | <%= link_with_item :user, [:admin, user], title: 'Показать' %>
       | <%= link_with_item :pencil, edit_admin_user_path(user), title: 'Редактировать' %>
-      | <%= link_with_item 'minus-square', [:admin, user], title: 'Удалить', method: :delete,
-      data: { confirm:
-                "Вы уверены, что хотите удалить пользователя \"#{user.email}\"?"
-               } %>
+      <% if more_than_one_admin?(@users) %>
+        | <%= link_with_item 'minus-square', [:admin, user], title: 'Удалить', method: :delete,
+        data: { confirm:
+                  "Вы уверены, что хотите удалить пользователя \"#{user.email}\"?"
+                 } %>
+      <% end %>
     </span>
   </p>
   <span class='links'><%= link_with_item 'user-plus', new_admin_user_path, title: 'Новый пользователь' %></span>

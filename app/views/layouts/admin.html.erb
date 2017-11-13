@@ -64,15 +64,19 @@
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
+        <% if more_than_one_admin?(@users)%>
         <div class="col-md-3">
           <div class="well sidebar-nav">
             Иные администраторы:
               <ul><% @users.admins.each do |a| %>
-                <p><li>id: <%= a.id %></li></p>
+                <% if a.id !=current_user.id %>
+                  <p><li>id: <%= a.id %></li></p>
+                <% end %>
               <% end %>
             </ul>
           </div><!--/.well -->
         </div>
+        <% end %>
       </div><!--/row-->
     </div> <!-- /container -->
 
