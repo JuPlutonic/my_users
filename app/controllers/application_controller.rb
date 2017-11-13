@@ -3,7 +3,7 @@
 # Authorization, mb need refactoring using CanCanCan gem
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  # before_action :set_users
+before_action :set__admin_users
   helper_method :have_rights_for?, :under_admin?
 
   protected
@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # def set_users
-  #   @users = User.all
-  # end
+def set_admin_users
+  @admin_users = User.all.admins
+ end
 
   def abort
     redirect_to :root, alert: 'У вас нет прав для выполнения этого действия'

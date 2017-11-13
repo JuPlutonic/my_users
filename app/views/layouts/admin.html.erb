@@ -67,9 +67,9 @@
         <div class="col-lg-3">
           <div class="well sidebar-nav">
             <ul class="nav nav-pills">
-              <li class="nav-header"> Новые пользователи:</li>
-              <% @users.each do |u| %>
-                <p class="row"><li><% link_to u.name, u %></li></p>
+              <li class="nav-header"> Администраторы:</li>
+              <% @admin_users.each do |a| %>
+                <p class="row"><li>id: <% link_to a.id, a %></li></p>
               <% end %>
             </ul>
           </div><!--/.well -->

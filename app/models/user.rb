@@ -10,4 +10,5 @@ class User < ApplicationRecord
   # try remember_created_at not created_at
   scope :admins, -> { where(admin: true) }
   scope :newbies, -> { where created_at: Time.now.beginning_of_day..Time.now.end_of_day }
+  scope :reverse_order, ->(order) { order(created_at: order) }
 end
