@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def under_admin?
-    current_user && current_user.admin?
+    current_user&.admin?
   end
 
   # Current_user can only edit his profile
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def set_admin_users
     @admin_users = User.all.admins
-   end
+  end
 
   # Should work only if user allowed cookies
   def visited

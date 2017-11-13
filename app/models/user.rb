@@ -9,6 +9,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   # try remember_created_at not created_at
   scope :admins, -> { where(admin: true) }
-  scope :newbies, -> { where created_at: Time.now.beginning_of_day..Time.now.end_of_day }
+  scope :newbies, -> { where created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day }
   scope :reverse_order, ->(order) { order(created_at: order) }
 end
