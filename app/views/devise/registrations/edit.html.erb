@@ -1,4 +1,4 @@
-<h2>Изменить <%= resource_name.to_s.humanize %></h2>
+<h2>Изменить <%= resource_name.to_s.humanize %></h2> <!--TEST why @user-->
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -23,17 +23,27 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(введите Ваш текущий пароль, чтобы провести изменения)</i><br />
+    <%= f.label :current_password %> <i>(введите Ваш текущий пароль, чтобы произвести изменения)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions">
     <%= f.submit t('.submit') %>
   </div>
+<!--TEST why more_than_one(@users) doesn't work-->
+  <div class="field checkbox-inline">
+  <% if resource.admin? && resource.id == current_user.id%>
+    <%= f.check_box :admin%>
+    <%= f.label "Администратор"%> <i>(Снять с себя права администратора)</i><br />
+  <% elsif resource.admin?%>
+    <%= f.check_box :admin%>
+    <%= f.label "Администратор"%> <i>(Снять права администратора с данного пользователя)</i><br />
+  <% end %>
+  </div>
+
 <% end %>
-
 <h3>Удалить учетную запись</h3>
-
+<!--TEST if it can delete @user-->
 <p>Разочарованы? <%= button_to "Удалить учетную запись", registration_path(resource_name), data: { confirm: "Вы уверены?" }, method: :delete %></p>
 
 <%= link_to t('.back'), root_path %>
