@@ -22,14 +22,6 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(введите Ваш текущий пароль, чтобы произвести изменения)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t('.submit') %>
-  </div>
 <!--TEST why more_than_one(@users) doesn't work-->
   <div class="field checkbox-inline">
   <% if resource.admin? && resource.id == current_user.id%>
@@ -39,6 +31,14 @@
     <%= f.check_box :admin%>
     <%= f.label "Администратор"%> <i>(Снять права администратора с данного пользователя)</i><br />
   <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(введите Ваш текущий пароль, чтобы произвести изменения)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+  <div class="actions">
+    <%= f.submit t('.submit') %>
   </div>
 
 <% end %>

@@ -28,6 +28,15 @@ ru:
     models:
       user: "Пользователь"
     errors:
+      models:
+        user:
+          attributes:
+             password_confirmation:
+              confirmation: "Пароли не совпадают"
+             password:
+              too_short: "Длина пароля не больше 5 символов"
+            current_password:
+              invalid: "Неверно введён пароль"
       messages:
         blank: 'не может быть пустым'
   devise:
