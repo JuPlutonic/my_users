@@ -1,6 +1,9 @@
+<% if user_signed_in? %>
+  <%user_or_email(current_user)%>
+<% end %>
 <h1><%=@i18n_hello+@name %></h1>
 <p><%=@i18n_time_now+@time %></p>
-<p><%=@i18n_viewed1+@to_s_times_displayed+@i18n_viewed2%></p>
+<p><%=@i18n_viewed1+(session[:times_displayed].to_s)+@i18n_viewed2%></p>
 
 <p><%= link_with_item :google, 'http://www.google.com', title: 'Google' %></p>
 <p><%= link_with_item 'times-circle-o', goodbye_path, title: @i18n_goodbye %></p>

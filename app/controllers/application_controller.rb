@@ -3,8 +3,8 @@
 # Authorization, mb need refactoring using CanCanCan gem
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-before_action :set__admin_users
-  helper_method :have_rights_for?, :under_admin?
+  before_action :set_admin_users, :visited
+  helper_method :authorized?, :under_admin?
 
   protected
 
@@ -24,9 +24,15 @@ before_action :set__admin_users
 
   private
 
-def set_admin_users
-  @admin_users = User.all.admins
- end
+  def set_admin_users
+    @admin_users = User.all.admins
+   end
+
+  # Should work only if user allowed cookies
+  def visited
+    session[:times_displayed] ||= 0
+    session[:times_displayed] += 1
+  end
 
   def abort
     redirect_to :root, alert: 'У вас нет прав для выполнения этого действия'

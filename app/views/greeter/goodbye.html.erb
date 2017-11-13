@@ -1,1 +1,4 @@
+<% if user_signed_in? %>
+  <%user_or_email(current_user)%>
+<% end %>
 <h1><%=@i18n_goodbye+@name %></h1>
