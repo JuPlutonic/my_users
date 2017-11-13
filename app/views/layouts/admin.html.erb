@@ -45,8 +45,8 @@
         <a class="navbar-brand" href="/admin/users">MyUsers</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li><%= link_with_item :users, users_path, title: ' Пользователи' %></li>
-            <li><%= link_with_item 'id-card', users_profiles_path, title: 'Профиль' %></li>
+            <li><%= link_with_item :users, admin_users_path, title: ' Пользователи' %></li>
+            <li><%#= link_with_item 'id-card', users_profile_path, title: 'Профиль' %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
@@ -60,20 +60,19 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-md-9">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-        <div class="col-lg-3">
+        <div class="col-md-3">
           <div class="well sidebar-nav">
-            <ul class="nav nav-pills">
-              <li class="nav-header"> Администраторы:</li>
-              <% @admin_users.each do |a| %>
-                <p class="row"><li>id: <% link_to a.id, a %></li></p>
+            Иные администраторы:
+              <ul><% @users.admins.each do |a| %>
+                <p><li>id: <%= a.id %></li></p>
               <% end %>
             </ul>
           </div><!--/.well -->
-        </div><!--/col-lg-3-->
+        </div>
       </div><!--/row-->
     </div> <!-- /container -->
 

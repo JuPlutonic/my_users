@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::BaseController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_admin
+  before_action :authenticate_user!, :require_admin
 
   layout 'admin'
 

@@ -3,9 +3,12 @@
 Rails.application.routes.draw do
   devise_for :users
   # resources :users, except: :destroy
-  namespace :users do
-    resources :profiles
+  resources :users, only: :show
+  resources :profiles
+  namespace :admin do
+    resources :users
   end
+
   get 'hello' => 'greeter#hello', as: :hello
   get 'goodbye' => 'greeter#goodbye', as: :goodbye
   root 'greeter#hello'

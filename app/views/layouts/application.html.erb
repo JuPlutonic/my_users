@@ -49,10 +49,10 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav navbar-left">
             <% if user_signed_in? %>
-              <li><%= link_with_item 'id-card', users_profiles_path, title: 'Профиль' %></li>
+              <li><%#= link_with_item 'id-card', new_users_profile_path, title: 'Профиль' %></li>
             <% end %>
             <% if under_admin? %>
-              <li><%= link_with_item :users, users_path, title: ' Админка' %></li>
+              <li><%= link_with_item :users, admin_users_path, title: ' Админка' %></li>
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -68,7 +68,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lt-9">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
