@@ -6,7 +6,7 @@
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav navbar-left">
         <li><%= link_with_item :users, admin_users_path, title: ' Пользователи' %></li>
-        <li><%= link_with_item 'id-card', profile_path, title: 'Профиль' %></li>
+        <li><%= link_with_item 'id-card', profiles_path, title: 'Профиль' %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
