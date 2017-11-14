@@ -118,6 +118,7 @@ ru:
         currently_waiting_confirmation_for_email: "Ожидается подтверждение адреса электронной почты: %{email}"
         email: "Электронная почта"
         leave_blank_if_you_don_t_want_to_change_it: "оставьте поле пустым, если не хотите его менять"
+        name: "Имя пользователя"
         password: "Пароль"
         password_instructions: "Оставьте поле пустым, если вы не хотите менять пароль"
         password_confirmation: "Подтверждение пароля"
@@ -129,6 +130,7 @@ ru:
       new:
         email: "Электронная почта"
         minimum_password_length: "минимум знаков"
+        name: "Имя пользователя"
         password: "Пароль"
         password_confirmation: "Подтверждение пароля"
         sign_up: "Регистрация"
