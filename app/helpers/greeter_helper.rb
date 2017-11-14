@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module GreeterHelper
-  def formatted_time(time)
-    time.strftime('%I:%M%p') # time string in AM/PM format
-  end
+  # def formatted_time(time)
+  #   time.strftime('%I:%M%p') # time string in AM/PM format
+  # end
 
   # Method used in check_user_name
   def user_or_email(object)

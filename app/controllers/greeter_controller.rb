@@ -7,7 +7,7 @@ class GreeterController < ApplicationController
     @i18n_time_now = 'Текущее время ' # The time now is
     @i18n_viewed1 = 'Данная страница показана ' # This page has been viewed
     @i18n_viewed2 = ' раз' # time(s)
-    @time = Time.zone.now.to_s
+    @time = (I18n.l Time.zone.now).to_s
     @i18n_goodbye = 'До свидания' # Goodbye
   end
 
