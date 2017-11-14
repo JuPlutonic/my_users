@@ -1,48 +1,53 @@
-<h2>Измение логина/пароля <%#= resource_name.to_s.humanize %>пользователя</h2>
+<h2><%= t('.title') %> <%#=resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
+  <div class="well">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="field">
+      <%= f.label t('.email') %><br />
+      <%= f.email_field :email, autofocus: true %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Ожидайте инструкции на почту: <%= resource.unconfirmed_email %></div>
-  <% end %>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div><%= t('.confirmaiton_instructions_sent_to_email') %> <%= resource.unconfirmed_email %></div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(оставьте поле пустым, если Вы не хотите ничего менять)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <div class="field">
+      <%= f.label t('.password') %> <i><%= t('.password_instrustions') %></i><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <div class="field">
+      <%= f.label t('.password_confirmation') %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
 
-<!--TEST why more_than_one(@users) doesn't work-->
-  <div class="field checkbox-inline">
-  <% if resource.admin? && resource.id == current_user.id%>
-    <%= f.check_box :admin%>
-    <%= f.label "Администратор"%> <i>(Снять с себя права администратора)</i><br />
-  <% elsif resource.admin?%>
-    <%= f.check_box :admin%>
-    <%= f.label "Администратор"%> <i>(Снять права администратора с данного пользователя)</i><br />
-  <% end %>
-  </div>
+  <!--TEST why more_than_one(@users) doesn't work-->
+    <% if resource.admin? %>
+      <div class="field">
+        <%= f.check_box :admin %>
+        <%if resource.id == current_user.id %>
+          <%= f.label t('.admin') %> <i><%= t('.admin_self_uncheck_instructions') %></i><br />
+        <% else resource.admin?%>
+          <%= f.label t('.admin') %> <i><%= t('.admin_uncheck_instructions') %></i><br />
+        <% end %>
+      </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(введите Ваш текущий пароль, чтобы произвести изменения)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-  <div class="actions">
-    <%= f.submit t('.submit') %>
+    <div class="field">
+      <%= f.label t('.current_password') %> <i><%= t('.current_password_instructions') %></i><br />
+      <%= f.password_field :current_password, autocomplete: "off" %>
+    </div>
+      <%= f.submit t('.submit') %>
   </div>
 
 <% end %>
-<h3>Удалить учетную запись</h3>
-<p>Разочарованы? <%= button_to "Удалить учетную запись", registration_path(resource_name), data: { confirm: "Вы уверены?" }, method: :delete %></p>
 
-<%= link_to t('.back'), root_path %>
+<h3><%= t('.cancel_my_account') %></h3>
+<div class="well">
+  <p><%= t('.unhappy') %></p>
+  <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: "#{t'.are_you_sure'}" }, method: :delete %>
+</div>
+
+<%= link_with_item :users, root_path, title: "#{t('.back')}" %>

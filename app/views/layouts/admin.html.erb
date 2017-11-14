@@ -16,7 +16,7 @@
       <div class="row">
       <% if more_than_one_admin?(@users)%>
         <div class="col-md-3 well">
-          Иные администраторы:
+          Другие администраторы:
           <ul><% @users.admins.each do |a| %>
             <% if a.id !=current_user.id %>
               <p><li>id: <%= a.id %></li></p>
@@ -29,7 +29,7 @@
       </div>
     </div>
   </body>
-  <footer class='navbar-fixed-bottom'>
+  <footer class='well navbar-fixed-bottom'>
     <p class="text-center">&copy;  2017 Жевлаков Алексей</p>
   </footer>
 </html>

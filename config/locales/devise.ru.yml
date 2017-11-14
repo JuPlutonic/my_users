@@ -1,14 +1,39 @@
 # Русский перевод для https://github.com/plataformatec/devise/tree/v4.3.0
 # Другие переводы на http://github.com/plataformatec/devise/wiki/I18n
 ru:
-  activeecord:
+  activerecord:
+    attributes:
+      user:
+        password: "Пароль"
+        password_confirmation : "Подтверждение пароля"
+        remember_me : "Запомнить меня"
     errors:
+      email:
+        taken: "уже зарегистрирован"
+        blank: "не должен быть пустым"
       messages:
         record_invalid: "Неправильная запись"
+      models:
+        user:
+          attributes:
+            current_password:
+              blank: "Не указан текущий пароль"
+              invalid: "Текущий пароль неверен"
+            email:
+              taken: "уже зарегистрирован"
+              blank: "не должен быть пустым"
+            password:
+              blank: "не должен быть пустым"
+              invalid: "Пароль не верен"
+              too_short: "пароль не должен выть короче 6 символов"
+            password_confirmation:
+              confirmation: "не совпадает с паролем"
   devise:
     confirmations:
       new:
         resend_confirmation_instructions: "Выслать повторно письмо с активацией"
+        submit: "Отправить запрос на подтверждение"
+        title: "Повторная отправка запроса на подтверждение"
       confirmed: "Ваша учётная запись подтверждена."
       send_instructions: "В течение нескольких минут вы получите письмо с инструкциями по подтверждению вашей учётной записи."
       send_paranoid_instructions: "Если ваш электронный адрес есть в нашей базе данных, то в течение нескольких минут вы получите письмо с инструкциями по подтверждению вашей учётной записи."
@@ -73,13 +98,23 @@ ru:
     registrations:
       destroyed: "До свидания! Ваша учётная запись удалена. Надеемся снова увидеть вас."
       edit:
+        admin: "Администратор"
+        admin_self_uncheck_instructions: "Снять с себя права администратора"
+        admin_uncheck_instructions: "Снять права администратора с данного пользователя"
         are_you_sure: "Вы уверены?"
         back: "Назад"
-        cancel_my_account: "Удалить учетную запись"
+        cancel_my_account: "Удалить учётную запись"
+        confirmaiton_instructions_sent_to_email: "Ожидайте письмо с инструкциями на почту:"
+        current_password: "Текущий пароль"
+        current_password_instructions: "Введите ваш текущий пароль, чтобы произвести изменения"
         currently_waiting_confirmation_for_email: "Ожидается подтверждение адреса электронной почты: %{email}"
+        email: "Электронная почта"
         leave_blank_if_you_don_t_want_to_change_it: "оставьте поле пустым, если не хотите его менять"
+        password: "Пароль"
+        password_instructions: "Оставьте поле пустым, если вы не хотите менять пароль"
+        password_confirmation: "Подтверждение пароля"
         submit: "Отправить"
-        title: "Редактировать %{resource}"
+        title: "Измение логина/пароля пользователя"
         unhappy: "Вам не нправится админка MyUsers?"
         update: "Обновить"
         we_need_your_current_password_to_confirm_your_changes: "введите текущий пароль для подтверждения изменений"
