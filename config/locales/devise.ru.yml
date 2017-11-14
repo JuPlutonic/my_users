@@ -5,15 +5,16 @@ ru:
     attributes:
       user:
         confirmation_token: "Код активации"
-        email: "Электронная почта"
-        password: "Пароль"
+        current_password: ""
+        email: ""
+        password: ""
         password_confirmation : "Подтверждение пароля"
         remember_me : "Запомнить меня"
         user: "Пользователь"
     errors:
       email:
-        taken: "уже зарегистрирован"
-        blank: "не должен быть пустым"
+        taken: "уже зарегистрирована"
+        blank: "не должна быть пустой"
       messages:
         record_invalid: "Неправильная запись"
       models:
@@ -25,12 +26,12 @@ ru:
               blank: "Не указан текущий пароль"
               invalid: "Текущий пароль неверен"
             email:
-              taken: "уже зарегистрирован"
-              blank: "не должен быть пустым"
+              taken: "Данная эл. почта уже зарегистрирована"
+              blank: "Поле \"Электронная почта\" не должно быть пустым"
             password:
               blank: "не должен быть пустым"
               invalid: "Пароль не верен"
-              too_short: "пароль не должен выть короче 6 символов"
+              too_short: "Пароль не должен быть короче 6 символов"
             password_confirmation:
               confirmation: "не совпадает с паролем"
   devise:
@@ -142,6 +143,7 @@ ru:
     sessions:
       already_signed_out: "Выход из системы уже выполнен."
       new:
+        title: "Вход в систему"
         sign_in: "Войти"
         submit: "Войти"
       signed_in: "Вход в систему выполнен."
@@ -175,7 +177,7 @@ ru:
       not_found: "не найдена"
       not_locked: "не заблокирована"
       not_saved:
-        few: "%{resource}: сохранение не удалось из-за %{count} ошибок:"
-        many: "%{resource}: сохранение не удалось из-за %{count} ошибок:"
-        one: "%{resource}: сохранение не удалось из-за %{count} ошибки"
-        other: "%{resource}: сохранение не удалось из-за %{count} ошибки"
+        few: "Сохранение не удалось из-за %{count} ошибок:"
+        many: "Сохранение не удалось из-за %{count} ошибок:"
+        one: "Сохранение не удалось из-за %{count} ошибки"
+        other: "Сохранение не удалось из-за %{count} ошибки"
