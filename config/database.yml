@@ -20,3 +20,7 @@ development:
 test:
   <<: *default
   database: my_users_test
+
+production:
+  <<: *default
+  database: my_users_production
