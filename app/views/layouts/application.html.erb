@@ -4,41 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "MyUsers" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : 'MyUsers' %></title>
     <%= csrf_meta_tags %>
-
-    <%= render 'shared/bootstrap' %>
+    <%= render 'shared/bootstrap'%>
   </head>
-  <body>
 
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%= link_with_item 'sun-o', root_path, title: 'MyUsers', class: 'navbar-brand' %>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav navbar-left">
-            <% if user_signed_in? %>
-              <li><%#= link_with_item 'id-card', new_users_profile_path, title: 'Профиль' %></li>
-            <% end %>
-            <% if under_admin? %>
-              <li><%= link_with_item :users, admin_users_path, title: ' Админка' %></li>
-            <% end %>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
-              <li><%= link_with_item 'sign-out', destroy_user_session_path, title: 'Выйти' , method: :delete %></li>
-              <li><%= link_with_item :pencil, edit_user_registration_path, title: "id в системе: #{current_user.id}" %></li>
-            <% else %>
-              <li><%= link_with_item 'sign-in', new_user_session_path, title: 'Войти' %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <body>
+    <%= render 'shared/navbar' %>
     <div class="container">
       <div class="row">
         <%= bootstrap_flash %>

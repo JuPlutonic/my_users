@@ -1,6 +1,3 @@
-<% if user_signed_in? %>
-  <%user_or_email(current_user)%>
-<% end %>
 <h1><%=@i18n_hello+@name %></h1>
 <p><%=@i18n_time_now+@time %></p>
 <p><%=@i18n_viewed1+(session[:times_displayed].to_s)+@i18n_viewed2%></p>

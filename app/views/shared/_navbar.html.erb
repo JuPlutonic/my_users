@@ -1,17 +1,30 @@
 <div class="navbar navbar-default navbar-static-top">
   <div class="container">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </button>
-    <%= link_with_item 'sun-o', root_path, title: 'MyUsers', class: 'navbar-brand' %>
+    <% admin_pane = under_admin? ? 'MyUsers Админка' : 'MyUsers' %>
+    <%= link_with_item 'sun-o', root_path, title: "#{admin_pane}", class: 'navbar-brand' %>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav navbar-left">
-        <li><%= link_with_item :users, admin_users_path, title: ' Пользователи' %></li>
-        <li><%= link_with_item 'id-card', profiles_path, title: 'Профиль' %></li>
+        <li><%= unless current_page?(controller: 'admin/users')
+                    if under_admin?
+                      link_with_item :users, admin_users_path, title: 'Пользователи'
+                    end
+             end %></li>
+        <!--<li>--><%#= link_with_)item 'id-card', profiles_path, title: 'Профиль' %><!--</li>-->
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_with_item 'sign-out', destroy_user_session_path, title: 'Выйти', method: :delete %></li>
+          <%user_or_email(current_user)%>
+          <li><%= link_with_item 'sign-out', destroy_user_session_path, title: 'Выйти' , method: :delete %></li>
           <li><%= link_with_item :pencil, edit_user_registration_path, title: "Ваш id в системе: #{current_user.id}" %></li>
+        <% else %>
+          <li><%= link_with_item 'sign-in', new_user_session_path, title: 'Войти' %></li>
+          <li><%= link_with_item 'user-plus ', new_user_registration_path, title: 'Зарегистрироваться' %></li>
         <% end %>
       </ul>
     </div>
