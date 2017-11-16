@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Will be changed by CanCan (gem for Authorization) implementation
 class Admin::BaseController < ApplicationController
   before_action :authenticate_user!
   before_action :require_admin

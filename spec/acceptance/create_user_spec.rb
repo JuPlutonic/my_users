@@ -9,7 +9,7 @@ feature 'Create user' do
 
   scenario 'User adds file when he registers' do
     fill_in t('.name'), with: "First user's name"
-    attach_file 'Avatar', "#{Rails.root}/public/favicon.png"
+    attach_file 'Avatar', "#{Rails.root}/public/favicon.png" # Выберете файл аватара
     fill_in t('.email'), with: 'mail@test.com'
     fill_in t('.password'), with: '123456'
     fill_in t('.password_confirmation'), with: '123456'

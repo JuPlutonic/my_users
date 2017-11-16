@@ -7,7 +7,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_one :profile, dependent: :destroy
+  validates :name, presense: true
   validates :email, uniqueness: true, presence: true
+  validates :avatar_file, presence: true
 
   scope :admins, -> { where(admin: true) }
   scope :other_admins, -> (cur_user){ where(admin: true) && where(cur_user!=id) }
