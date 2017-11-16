@@ -7,6 +7,7 @@ ru:
         confirmation_token: "Код активации"
         current_password: ""
         email: ""
+        name: ""
         password: ""
         password_confirmation : "Подтверждение пароля"
         remember_me : "Запомнить меня"
@@ -14,22 +15,24 @@ ru:
     errors:
       email:
         taken: "уже зарегистрирована"
-        blank: "не должна быть пустой"
+        blank: "не может быть пустой"
       messages:
         record_invalid: "Неправильная запись"
       models:
         user:
           attributes:
             confirmation_token:
-              blank: "не должен быть пустым"
+              blank: "не может быть пустым"
             current_password:
               blank: "Не указан текущий пароль"
               invalid: "Текущий пароль неверен"
             email:
               taken: "Данная эл. почта уже зарегистрирована"
               blank: "Поле \"Электронная почта\" не должно быть пустым"
+            name:
+              blank: "Не может быть пустым"
             password:
-              blank: "не должен быть пустым"
+              blank: "не может быть пустым"
               invalid: "Пароль не верен"
               too_short: "Пароль не должен быть короче 6 символов"
             password_confirmation:
@@ -128,7 +131,7 @@ ru:
         update: "Обновить"
         we_need_your_current_password_to_confirm_your_changes: "введите текущий пароль для подтверждения изменений"
       new:
-        email: "Электронная почта"
+        email: "Электронная почта (используйте пока пять заданных почтовых адреса: testing1-5@harakirimail.com)"
         minimum_password_length: "минимум знаков"
         name: "Имя пользователя"
         password: "Пароль"

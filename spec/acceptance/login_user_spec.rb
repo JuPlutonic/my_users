@@ -14,9 +14,9 @@ feature 'Login', %q{
     visit new_user_session_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: '123456'
-    click_on t('.submit') # try it
+    click_on I18n.t('.submit') # try it
 
-    expect(page).to have_content t('.signed_up') # it's better to watch if the message has words 'signed up'
+    expect(page).to have_content I18n.t('.signed_up') # it's better to watch if the message has words 'signed up'
     expect(page).to have_link 'Log out'
   end
 
@@ -24,9 +24,9 @@ feature 'Login', %q{
     visit new_user_session_path
     fill_in 'Email', with: 'wrong@test.com'
     fill_in 'Password', with: 'w_r_o_n_g'
-    click_on t('.submit') # try it
+    click_on I18n.t('.submit') # try it
 
-    expect(page).to have_content t('.invalid') #  it's better to watch if the message has words  'Invalid email or password'
-    expect(page).to_not have_link 'Выйти' # or try Log out or try t('.sign_out')
+    expect(page).to have_content I18n.t('.invalid') #  it's better to watch if the message has words  'Invalid email or password'
+    expect(page).to_not have_link 'Выйти' # or try Log out or try I18n t('.sign_out')
   end
 end
