@@ -30,6 +30,7 @@ gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'remotipart'
 gem 'sass-rails', '~> 5.0'
+gem 'sidekiq'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
